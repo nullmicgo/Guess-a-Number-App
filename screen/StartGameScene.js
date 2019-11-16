@@ -7,9 +7,21 @@ import Colors from '../constants/colors';
 const StartGameScreen = props =>{
 
     const [enteredValue, setEnteredValue] = useState('');
+    const [confirmed, setConfirmed] = useState(false);
+    const [selectedNumber, setSelectedNumber] = useState();
 
-    const numberInputHandler = InputText =>{
+    const numberInputHandler = inputText =>{
         setEnteredValue(inputText.replace(/[^0-9]/g, ''));
+    }
+
+    const resetInputHandler = () =>{
+        setEnteredValue('');
+    }
+
+    const confirmInputHandler = () =>{
+        setConfirmed(true);
+        setEnteredValue('');
+        setSelectedNumber();
     }
 
     return (
@@ -20,9 +32,9 @@ const StartGameScreen = props =>{
                 <Text style={styles.title}>Start a New Game</Text>
                 <Card style={styles.inputContainer}>
                         <Text>Select a Number</Text>
-                        <Input style={styles.input} blurOnSubmit autoCapitalize='none' autoCorrect={false} keyboardType="number-pad" maxLength={2} value={enteredValue}  />
+                        <Input style={styles.input} blurOnSubmit autoCapitalize='none' autoCorrect={false} keyboardType="number-pad" maxLength={2} value={enteredValue} onChangeText={numberInputHandler}  />
                         <View style={styles.buttonContainer}>
-                            <View style={styles.button}><Button title="Reset" onPress={() => {}} color={Colors.accent} /></View>
+                            <View style={styles.button}><Button title="Reset" onPress={resetInputHandler} color={Colors.accent} /></View>
                             <View style={styles.button}><Button title="Confirm" onPress={() => {}} color={Colors.primary} /></View>   
                         </View>
                 </Card>

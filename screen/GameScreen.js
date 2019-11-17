@@ -1,12 +1,12 @@
 import React, { useState, useRef, useEffect} from 'react';
 import { View, Text, StyleSheet, Button, Alert, ScrollView} from 'react-native';
-
 import NumberContainer from '../components/NumberContainer';
 import Card from '../components/Card';
 import DefaultStyles from '../constants/default-styles';
 import MainButton from '../components/MainButton';
-
 import { Ionicons} from '@expo/vector-icons';
+import BodyText from '../components/BodyText';
+
 
 const generateRandomBetween = (min, max, exclude) => {
      min = Math.ceil(min);
@@ -19,6 +19,14 @@ const generateRandomBetween = (min, max, exclude) => {
          return rndNumber;
      }
 };
+
+const renderListItem = (value , numberOfRound) =>(
+    <View key={value} style={styles.listItem}>
+        <BodyText>#{numberOfRound}</BodyText>
+        <BodyText>{value}</BodyText>
+    </View>
+)
+
 
 const GameScreen = props => {
     const initialGuess =  generateRandomBetween(1, 100, props.userChoice);
@@ -72,9 +80,7 @@ const GameScreen = props => {
             <ScrollView>
 
                 {pastGuess.map(guess => (
-                    <View key={guess}>
-                        <Text>{guess}</Text>
-                    </View>
+                    renderListItem(guess)
                 ))}
             </ScrollView>
         </View>
@@ -94,6 +100,14 @@ const styles = StyleSheet.create({
         width:400,
         maxWidth: '90%'
     },
+    listItem:{
+        borderColor: "#ccc",
+        padding: 15,
+        borderWidth:1,
+        marginVertical: 10,
+        backgroundColor: "white",
+        flexDirection:'row'
+    }
 });
 
 

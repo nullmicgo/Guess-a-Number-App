@@ -4,6 +4,8 @@ import  {View, Text, StyleSheet, Button, Image} from 'react-native';
 import BodyText from '../components/BodyText';
 import TitleText from '../components/TitleText';
 import  Colors  from '../constants/colors';
+import MainButton from '../components/MainButton';
+
 
 const GameOverScreen = props => {
     return (
@@ -13,10 +15,8 @@ const GameOverScreen = props => {
             <View style={styles.imageContainer}>
                 <Image 
                 fadeDuration={300}
-                // source={require('../assets/success.png')}
-                source={{uri:'https://media.istockphoto.com/photos/success-picture-id912928582?k=6&m=912928582&s=612x612&w=0&h=GCLKEbbQKhh17Z36oHO6mC6q-hHXnrFUVjXOsYzWNyw='}}
-
-                 
+                source={require('../assets/success.png')}
+                // source={{uri:'https://media.istockphoto.com/photos/success-picture-id912928582?k=6&m=912928582&s=612x612&w=0&h=GCLKEbbQKhh17Z36oHO6mC6q-hHXnrFUVjXOsYzWNyw='}} 
                 style={styles.image} 
                 resizeMode="cover" />
             </View>
@@ -26,7 +26,9 @@ const GameOverScreen = props => {
                 </BodyText>
             </View>
 
-            <Button title="NEW GAME" onPress={props.onRestart}></Button>
+            <MainButton title="NEW GAME" onPress={props.onRestart}>
+                    NEW GAME
+            </MainButton>
         </View>
 
     );

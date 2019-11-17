@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text, StyleSheet, TextInput, Button, 
         TouchableWithoutFeedback, Keyboard, Alert,
         Dimensions , ScrollView, KeyboardAvoidingView} from 'react-native';
@@ -18,11 +18,19 @@ const StartGameScreen = props =>{
 
     const [buttonWidth, setButtonWidth] = useState(Dimensions.get('window').width / 4 );
 
-    const updateLayout = () =>{
-        setButtonWidth(Dimensions.get('window').width / 4);
-    }
 
-    Dimensions.addEventListener('change',updateLayout);
+    useEffect(()=>{
+        const updateLayout = () =>{
+            setButtonWidth(Dimensions.get('window').width / 4);
+        }
+        Dimensions.addEventListener('change',updateLayout);
+        return (()=>{
+            //clean up the listner, because we already create another one
+            Dimensions.removeEventListener('change',updateLayout);
+        });
+    });
+
+ 
 
 
     const numberInputHandler = inputText =>{

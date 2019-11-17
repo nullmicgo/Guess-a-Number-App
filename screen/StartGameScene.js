@@ -16,6 +16,15 @@ const StartGameScreen = props =>{
     const [confirmed, setConfirmed] = useState(false);
     const [selectedNumber, setSelectedNumber] = useState();
 
+    const [buttonWidth, setButtonWidth] = useState(Dimensions.get('window').width / 4 );
+
+    const updateLayout = () =>{
+        setButtonWidth(Dimensions.get('window').width / 4);
+    }
+
+    Dimensions.addEventListener('change',updateLayout);
+
+
     const numberInputHandler = inputText =>{
         setEnteredValue(inputText.replace(/[^0-9]/g, ''));
     }
@@ -63,8 +72,8 @@ const StartGameScreen = props =>{
                                     <BodyText>Select a Number</BodyText>
                                     <Input style={styles.input} blurOnSubmit autoCapitalize='none' autoCorrect={false} keyboardType="number-pad" maxLength={2} value={enteredValue} onChangeText={numberInputHandler}  />
                                     <View style={styles.buttonContainer}>
-                                        <View style={styles.button}><Button title="Reset" onPress={resetInputHandler} color={Colors.accent} /></View>
-                                        <View style={styles.button}><Button title="Confirm" onPress={confirmInputHandler} color={Colors.primary} /></View>   
+                                        <View style={{width: buttonWidth}}><Button title="Reset" onPress={resetInputHandler} color={Colors.accent} /></View>
+                                        <View style={{width: buttonWidth}}><Button title="Confirm" onPress={confirmInputHandler} color={Colors.primary} /></View>   
                                     </View>
                             </Card>
                             {confirmedOutput}

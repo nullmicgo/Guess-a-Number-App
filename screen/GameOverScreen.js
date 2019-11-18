@@ -9,29 +9,29 @@ import MainButton from '../components/MainButton';
 
 const GameOverScreen = props => {
     return (
-        <ScrollView>
-            <View style={styles.screen}>
-                <TitleText>The Game is Over!</TitleText>
+                <ScrollView>
+                    <View style={styles.screen}>
+                        <TitleText>The Game is Over!</TitleText>
 
-                <View style={styles.imageContainer}>
-                    <Image 
-                    fadeDuration={300}
-                    source={require('../assets/success.png')}
-                    // source={{uri:'https://media.istockphoto.com/photos/success-picture-id912928582?k=6&m=912928582&s=612x612&w=0&h=GCLKEbbQKhh17Z36oHO6mC6q-hHXnrFUVjXOsYzWNyw='}} 
-                    style={styles.image} 
-                    resizeMode="cover" />
-                </View>
-                <View style={styles.resultContainer}>
-                    <BodyText style={styles.resultText}>
-                        Your phone needed <Text style={styles.highlight}>{props.roundsNumber}</Text> rounds to guess the number <Text>{props.userNumber}</Text>.
-                    </BodyText>
-                </View>
+                        <View style={styles.imageContainer}>
+                            <Image 
+                            fadeDuration={300}
+                            source={require('../assets/success.png')}
+                            // source={{uri:'https://media.istockphoto.com/photos/success-picture-id912928582?k=6&m=912928582&s=612x612&w=0&h=GCLKEbbQKhh17Z36oHO6mC6q-hHXnrFUVjXOsYzWNyw='}} 
+                            style={styles.image} 
+                            resizeMode="cover" />
+                        </View>
+                        <View style={styles.resultContainer}>
+                            <BodyText style={styles.resultText}>
+                                Your phone needed <Text style={styles.highlight}>{props.roundsNumber}</Text> rounds to guess the number <Text>{props.userNumber}</Text>.
+                            </BodyText>
+                        </View>
 
-                <MainButton title="NEW GAME" onPress={props.onRestart}>
-                        NEW GAME
-                </MainButton>
-            </View>
-        </ScrollView>
+                        <MainButton title="NEW GAME" onPress={props.onRestart}>
+                                NEW GAME
+                        </MainButton>
+                    </View>
+                </ScrollView>
     );
 }
 
